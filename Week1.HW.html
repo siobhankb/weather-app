@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Current Weather</title>
+    <style>
+      div {
+        display: block;
+      }
+      h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #1964d6;
+        display: block;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        display: block;
+        color: black;
+        text-align: center;
+        font-size: 34px;
+        font-weight: normal;
+        margin: 0;
+        padding: 5px 0px;
+      }
+      h3 {
+        font-family: Arial, Helvetica, sans-serif;
+        color: black;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        display: inline;
+        margin: 18 0;
+        transition: all 200ms ease-in-out;
+      }
+      ul {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+      }
+      li {
+        list-style: none;
+        text-align: center;
+        margin: 0 auto;
+        padding: 20px 0;
+        border-radius: 10px;
+        transition: all 200ms ease-in-out;
+        max-width: 400px;
+      }
+      li:hover {
+        margin: 0 auto;
+        padding: 20px 0;
+        border-radius: 10px;
+        transition: all 200ms ease-in-out;
+        max-width: 400px;
+        background: #fffbef;
+      }
+      p {
+        font-family: monospace;
+        color: black;
+        display: block;
+        margin: 18 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: normal;
+        opacity: 0.7;
+      }
+      button {
+        background: #1a64d6;
+        color: white;
+        border: 2px solid #1a64d6;
+        box-shadow: 2px 4px 4px #d9d6e1;
+        border-radius: 30px;
+        display: block;
+        margin: 20px auto;
+        font-size: 16px;
+        padding: 15px 20px;
+        transition: all 150ms ease-in-out;
+      }
+      button:hover {
+        background: transparent;
+        color: #1a64d6;
+        border: 2px solid #1a64d6;
+        display: block;
+        margin: 20px auto;
+        cursor: pointer;
+      }
+      .author {
+        font-family: "Arial Narrow";
+        color: black;
+        display: block;
+        text-align: center;
+        font-size: 10px;
+        font-weight: normal;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      🌤
+      <br />
+      Currently 21&deg; in Tokyo
+    </h1>
+    <h2>13&deg; / <strong>23&deg;</strong></h2>
+    <div>
+      <ul>
+        <li>
+          <h3>🌧 Tomorrow</h3>
+          <p>10&deg; <strong>/ 22&deg;</strong></p>
+        </li>
+        <li>
+          <h3>🌥 Saturday</h3>
+          <p>15&deg; / <strong>17&deg;</strong></p>
+        </li>
+        <li>
+          <h3>☀️ Sunday</h3>
+          <p>25&deg; / <strong>28&deg;</strong></p>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button>Change city</button>
+      <p class="author">Coded by Siobhan Boylan</p>
+    </div>
+  </body>
+</html>

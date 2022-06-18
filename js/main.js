@@ -6,16 +6,14 @@
 
 //  https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 // https://api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
-// 8f519a092dcc33fa81b709ac8021deb1
-console.log("when the going gets tough...");
 
-// https://api.openweathermap.org/data/2.5/weather?q=Lakewood&appid=8f519a092dcc33fa81b709ac8021deb1
+console.log("when the going gets tough...");
 
 
 // API for latt/long
 // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
-const key = "8f519a092dcc33fa81b709ac8021deb1";
+
 {
     async function getWeatherData(city) {
         let weatherCityAPIurl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`;

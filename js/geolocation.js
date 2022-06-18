@@ -1,5 +1,5 @@
 {
-  const key = "8f519a092dcc33fa81b709ac8021deb1";
+
   //get random lat/lon for page launch:
   function randomLocation() {
     let randomLatLon = {

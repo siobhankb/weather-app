@@ -7,30 +7,12 @@
 //  https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 // https://api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
 
+console.log("when the going gets tough...");
+
 // API for latt/long
 // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
 {
-  // get input
-let cityInput = document.getElementById("cityInputForm");
-
-  // handleEvent --> first set function for click
-  async function handleSubmit(event) {
-    console.log(event.target);
-    event.preventDefault();
-    let userCity = event.target.city.value;
-    console.log(userCity);
-    let w = await getWeatherData(userCity);
-    // get info from input, send to display output
-    displayWeatherCityInfo(w);
-    event.target.value = "";
-  }
-
-  //addEventListener
-  cityInput.addEventListener("submit", handleSubmit);
-  console.log(cityInput);
-
-  // get API data
   const key = "8f519a092dcc33fa81b709ac8021deb1";
   async function getWeatherData(city) {
     let weatherCityAPIurl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`;
@@ -38,12 +20,15 @@ let cityInput = document.getElementById("cityInputForm");
     try {
       let weatherCityRequest = await fetch(weatherCityAPIurl);
       let weatherCityData = await weatherCityRequest.json();
+      displayWeatherCityInfo(weatherCityData);
       return weatherCityData;
     } catch (err) {
       console.log("Houston, we have a problem");
       console.log(err);
     }
   }
+
+  getWeatherData("Lakewood");
 
   function displayWeatherCityInfo(weatherCityObj) {
     let currentTemp = `${weatherCityObj["main"]["temp"]}`;
@@ -55,9 +40,7 @@ let cityInput = document.getElementById("cityInputForm");
     let minTemp = `${weatherCityObj["main"]["temp_min"]}`;
 
     // get div to display info:
-    const weatherDataDisplay = document.getElementById("current");
-
-    let content = "";
+    const weatherDataDisplay = document.getElementById("#current");
 
     //make current conditions card:
     const currRow = document.createElement("div");
@@ -79,28 +62,54 @@ let cityInput = document.getElementById("cityInputForm");
     currentIcon.src = iconURL;
     iconCol.append(currentIcon);
 
+    // make row/col for feelsLike card:
+    const feelsRow = document.createElement("div");
+    feelsRow.className = "row justify-content-md-center";
+    weatherDataDisplay.append(feelsRow);
+    const feelsCol = document.createElement("div");
+    feelsCol.className = "col col-md-auto text-center text-middle";
+    feelsCol.id = "feels-like"
+    feelsRow.append(feelsCol);
+
+    // make row for High/Low cards:
+    // make row to display high & low together:
+    const hiLoCardRow = document.createElement("div");
+    hiLoCardRow.className = "row justify-content-md-center";
+    weatherDataDisplay.append(hiLoCardRow);
+    const hiLoCol = document.createElement("div");
+    hiLoCol.className = "col-4 text-center";
+    hiLoCardRow.append(hiLoCol);
+    const hiLoRow = document.createElement("div")
+    hiLoRow.className = "row justify-content-md-center"
+    hiLoCol.append(hiLoRow);
+    const hiCol = document.createElement("div");
+    hiCol.className = "col-2 text-center";
+    hiCol.id = "high-temp"
+    hiLoRow.append(hiCol);
+    const loCol = document.createElement("div");
+    loCol.className = "col-2 text-center";
+    loCol.id = "low-temp"
+    hiLoRow.append(loCol);
+
     var weather = [
-      ["Feels Like:", feelsLike],
-      ["High:", maxTemp],
-      ["Low:", minTemp],
+      ["Feels Like:", feelsLike, '#feels-like'],
+      ["High:", maxTemp, '#high-temp'],
+      ["Low:", minTemp '#low-temp'],
     ];
 
+    let temps = "";
     weather.forEach((w) => {
-      content += `
-      <div class = "row justify-content-md-center">
-        <div class = "col col-4">
-          <div id="weatherCard" class="card text-center border-0">
-              <div class="card-body">
-                  <h3 class="card-title fw-bold">${w[0]}</h3>
-                  <p class="card-text fs-3">${w[1]}&deg</p>
-              </div>
+      temps = `
+      <div id="weatherCard" class="card">
+          <div class="card-body">
+              <h3 class="card-title">${w[0]}</h3>
+              <p class="card-text fs-3 fw-bold">${w[1]}&deg</p>
           </div>
-        </div>
       </div>
     `;
+      // document.querySelector(w[2]).innerHTML = temps
     });
-
-    document.querySelector("#temps").innerHTML = content;
+    document.querySelector("#temps").innerHTML = temps;
 
     // make feels like card:
     // feelsCard = new WeatherCard(`Feels Like:`, feelsLike);
